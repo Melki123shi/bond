@@ -89,7 +89,7 @@ export default function BondSearchForm() {
   const hasFilters = Object.values(filters).some((value) => value !== "");
 
   return (
-    <Card className="w-full">
+    <Card className="w-full bg-transparent text-white border-0">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Search className="h-5 w-5" />
@@ -99,7 +99,7 @@ export default function BondSearchForm() {
       <CardContent className="space-y-6">
         {/* Coupon Rate Range */}
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-muted-foreground">
+          <h3 className="text-sm font-medium text-neutral-200">
             Coupon Rate Range (%)
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -129,7 +129,9 @@ export default function BondSearchForm() {
                 placeholder="e.g. 6.0"
                 value={filters.maxCoupon}
                 onChange={(e) => handleInputChange("maxCoupon", e.target.value)}
-                className={errors.maxCoupon ? "border-red-500" : ""}
+                className={`${
+                  errors.maxCoupon ? "border-red-500" : ""
+                } placeholder-amber-200`}
               />
               {errors.maxCoupon && (
                 <p className="text-xs text-red-500">{errors.maxCoupon}</p>
@@ -140,7 +142,7 @@ export default function BondSearchForm() {
 
         {/* Maturity Date Range */}
         <div className="space-y-4">
-          <h3 className="text-sm font-medium text-muted-foreground">
+          <h3 className="text-sm font-medium text-neutral-200">
             Maturity Date Range
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -160,7 +162,9 @@ export default function BondSearchForm() {
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="maturityBefore">Before Date</Label>
+              <Label className="text-neutral-200" htmlFor="maturityBefore">
+                Before Date
+              </Label>
               <Input
                 id="maturityBefore"
                 type="date"
@@ -179,11 +183,11 @@ export default function BondSearchForm() {
 
         {/* Reset Button */}
         {hasFilters && (
-          <div className="flex justify-end">
+          <div className="flex justify-start">
             <Button
               variant="outline"
               onClick={handleReset}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 bg-purple-700 border-transparent hover:bg-transparent hover:text-white hover:border-blue-950 text-white hover:cursor-pointer"
             >
               <RotateCcw className="h-4 w-4" />
               Reset Filters
